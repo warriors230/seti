@@ -11,9 +11,9 @@ import lombok.Data;
 @Data
 public class EnvioPedidoResponse {
 
-    @XmlElement(name = "Codigo", namespace = SoapSchemas.NAMESPACE)
+    @XmlElement(name = "Codigo")
     private String codigo;
 
-    @XmlElement(name = "Mensaje", namespace = SoapSchemas.NAMESPACE)
+    @XmlElement(name = "Mensaje")
     private String mensaje;
 }

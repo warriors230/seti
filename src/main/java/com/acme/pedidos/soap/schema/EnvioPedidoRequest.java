@@ -11,21 +11,21 @@ import lombok.Data;
 @Data
 public class EnvioPedidoRequest {
 
-    @XmlElement(name = "pedido", namespace = SoapSchemas.NAMESPACE)
+    @XmlElement(name = "pedido")
     private String pedido;
 
-    @XmlElement(name = "Cantidad", namespace = SoapSchemas.NAMESPACE)
+    @XmlElement(name = "Cantidad")
     private String cantidad;
 
-    @XmlElement(name = "EAN", namespace = SoapSchemas.NAMESPACE)
+    @XmlElement(name = "EAN")
     private String ean;
 
-    @XmlElement(name = "Producto", namespace = SoapSchemas.NAMESPACE)
+    @XmlElement(name = "Producto")
     private String producto;
 
-    @XmlElement(name = "Cedula", namespace = SoapSchemas.NAMESPACE)
+    @XmlElement(name = "Cedula")
     private String cedula;
 
-    @XmlElement(name = "Direccion", namespace = SoapSchemas.NAMESPACE)
+    @XmlElement(name = "Direccion")
     private String direccion;
 }

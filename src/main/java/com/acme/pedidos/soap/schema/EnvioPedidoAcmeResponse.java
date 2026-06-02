@@ -13,6 +13,6 @@ import lombok.Data;
 @Data
 public class EnvioPedidoAcmeResponse {
 
-    @XmlElement(name = "EnvioPedidoResponse", namespace = SoapSchemas.NAMESPACE)
+    @XmlElement(name = "EnvioPedidoResponse")
     private EnvioPedidoResponse envioPedidoResponse;
 }

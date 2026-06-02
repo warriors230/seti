@@ -28,11 +28,6 @@ import java.io.ByteArrayInputStream;
 import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 
-/**
- * Implementación concreta del servicio de pedidos ACME.
- * Realiza la validación manual y todo el flujo de integración JSON a SOAP XML directamente
- * utilizando Jaxb2Marshaller para la serialización y deserialización.
- */
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -44,10 +39,6 @@ public class PedidoServiceImpl implements PedidoService {
     @Value("${acme.soap.endpoint}")
     private String soapEndpoint;
 
-    /**
-     * Valida los campos, convierte a SOAP XML usando JAXB, consume el servicio externo
-     * y retorna la respuesta convertida a DTO.
-     */
     @Override
     public EnviarPedidoResponse enviarPedido(EnviarPedidoRequest request) {
         log.info("[PedidoServiceImpl] Procesando solicitud de pedido");
@@ -67,8 +58,6 @@ public class PedidoServiceImpl implements PedidoService {
         return parsearSoapToJson(soapResponse);
     }
 
-    // ─── Validaciones Manuales ──────────────────────────────────────────────────
-
     private void validarRequest(EnviarPedidoRequest request) {
         if (request == null) {
             throw new IllegalArgumentException("El objeto enviarPedido no puede ser nulo");
@@ -86,8 +75,6 @@ public class PedidoServiceImpl implements PedidoService {
             throw new IllegalArgumentException("El campo " + nombreCampo + " es obligatorio");
         }
     }
-
-    // ─── Parseamos de JSON a XML con Jaxb2Marshaller ───────────────────────────
 
     private String conversionSoap(EnviarPedidoRequest req) {
         try {
@@ -124,8 +111,6 @@ public class PedidoServiceImpl implements PedidoService {
         }
     }
 
-    // ─── Consumo HTTP SOAP ──────────────────────────────────────────────────────
-
     private String consumirSoap(String soapBody) {
         log.info("Llamando al endpoint externo: {}", soapEndpoint);
         try {
@@ -158,8 +143,6 @@ public class PedidoServiceImpl implements PedidoService {
                 </soapenv:Envelope>
                 """;
     }
-
-    // ─── Parseamos de XML a JSON con Jaxb2Marshaller ───────────────────────────
 
     private EnviarPedidoResponse parsearSoapToJson(String xml) {
         try {
