@@ -64,7 +64,7 @@ public class PedidoController {
         log.info("Pedido recibido: {}", requestWrapper);
 
         if (requestWrapper == null || requestWrapper.getEnviarPedido() == null) {
-            throw new IllegalArgumentException("El cuerpo JSON debe contener el nodo enviarPedido");
+            throw new IllegalArgumentException("El cuerpo JSON debe contener el el objeto enviarPedido");
         }
 
         EnviarPedidoResponse response = pedidoService.enviarPedido(requestWrapper.getEnviarPedido());
