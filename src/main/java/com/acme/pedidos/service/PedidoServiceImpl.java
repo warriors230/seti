@@ -86,11 +86,11 @@ public class PedidoServiceImpl implements PedidoService {
             soapReq.setCedula(AcmeUtils.limpiarCadena(req.getNumDocumento()));
             soapReq.setDireccion(AcmeUtils.limpiarCadena(req.getDireccion()));
 
-            EnvioPedidoAcme envelope = new EnvioPedidoAcme();
-            envelope.setEnvioPedidoRequest(soapReq);
+            EnvioPedidoAcme envioPedido = new EnvioPedidoAcme();
+            envioPedido.setEnvioPedidoRequest(soapReq);
 
             StringWriter writer = new StringWriter();
-            jaxb2Marshaller.marshal(envelope, new StreamResult(writer));
+            jaxb2Marshaller.marshal(envioPedido, new StreamResult(writer));
             String payloadXml = writer.toString();
 
             // Quitamos la declaración XML <?xml...?> si viene incluida para que el body SOAP sea válido.
