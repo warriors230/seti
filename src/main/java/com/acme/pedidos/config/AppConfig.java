@@ -13,6 +13,7 @@ import javax.net.ssl.SSLException;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
@@ -37,7 +38,7 @@ public class AppConfig {
 
     @Bean
     public org.springframework.oxm.jaxb.Jaxb2Marshaller jaxb2Marshaller() {
-        org.springframework.oxm.jaxb.Jaxb2Marshaller marshaller = new org.springframework.oxm.jaxb.Jaxb2Marshaller();
+        Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
         marshaller.setPackagesToScan("com.acme.pedidos.soap.schema");
         return marshaller;
     }
