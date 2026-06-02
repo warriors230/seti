@@ -37,7 +37,7 @@ public class AppConfig {
 	}
 
     @Bean
-    public org.springframework.oxm.jaxb.Jaxb2Marshaller jaxb2Marshaller() {
+    public Jaxb2Marshaller jaxb2Marshaller() {
         Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
         marshaller.setPackagesToScan("com.acme.pedidos.soap.schema");
         return marshaller;
