@@ -1,0 +1,19 @@
+services:
+  acme-pedidos:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: acme-pedidos-api
+    ports:
+      - "8080:8080"
+    environment:
+      - ACME_SOAP_ENDPOINT=https://run.mocky.io/v3/19217075-6d4e-4818-98104587
+      - SERVER_PORT=8080
+      - LOGGING_LEVEL_COM_ACME_PEDIDOS=DEBUG
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
